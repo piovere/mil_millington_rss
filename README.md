@@ -8,5 +8,5 @@ I also have never had a project or coded with github before! So lots of firsts h
 twitter (pip install twitter)
 
 ##TODO:
--convert URLs that appear in the tweets to links
--title of RSS entry should link to enclosed link
+* convert URLs that appear in the tweets to links
+* title of RSS entry should link to enclosed link
