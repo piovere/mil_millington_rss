@@ -15,4 +15,8 @@ t = twitter.Twitter(auth=auth)
 
 my_tweets = t.statuses.user_timeline(screen_name="MilMillington")
 
+for key in my_tweets[0].keys():
+	print key
+
+print "\n"
 print my_tweets[0]['text']
