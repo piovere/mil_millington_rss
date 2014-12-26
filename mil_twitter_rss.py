@@ -1,15 +1,16 @@
 """The main module
 
-supported by a file in the same directory called "auth_keys.py" with twitter api keys
+supported by a file in the same directory called "config.py" with twitter api keys
 """
 
-import auth_keys
+import config
 import twitter
+import PyRSS2Gen
 
-auth = twitter.OAuth(token=auth_keys.access_token, 
-	                 token_secret=auth_keys.token_secret,
-	                 consumer_secret=auth_keys.consumer_secret,
-	                 consumer_key=auth_keys.consumer_key)
+auth = twitter.OAuth(token=config.access_token, 
+	                 token_secret=config.token_secret,
+	                 consumer_secret=config.consumer_secret,
+	                 consumer_key=config.consumer_key)
 
 t = twitter.Twitter(auth=auth)
 
