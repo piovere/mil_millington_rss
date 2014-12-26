@@ -19,7 +19,11 @@ my_tweets = t.statuses.user_timeline(screen_name="MilMillington")
 for key in my_tweets[0].keys():
 	print key
 
-print "\n"
-print my_tweets[0]['text']
+# Code to detect links and add HTML markup
+# Pulled from http://stackoverflow.com/questions/1071191/detect-urls-in-a-string-and-wrap-with-a-href-tag
+def url_sub(tweet):
+	URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
+	return URL_REGEX.sub(r'<a href="\1">\1</a>')
 
-# Adding a comment, just playing around
+print "\n"
+print url_sub(my_tweets[0]['text'])
