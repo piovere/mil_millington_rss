@@ -19,5 +19,7 @@ my_tweets = t.statuses.user_timeline(screen_name="MilMillington")
 for key in my_tweets[0].keys():
 	print key
 
+# Code to detect links and add HTML markup
+
 print "\n"
 print my_tweets[0]['text']
