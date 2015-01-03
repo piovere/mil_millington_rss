@@ -22,9 +22,9 @@ for key in my_tweets[0].keys():
 
 # Code to detect links and add HTML markup
 # Pulled from http://stackoverflow.com/questions/1071191/detect-urls-in-a-string-and-wrap-with-a-href-tag
-def url_sub(tweet):
-	URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
-	return URL_REGEX.sub(r'<a href="\1">\1</a>')
+# def url_sub(tweet):
+# 	URL_REGEX = re.compile(r'''((?:mailto:|ftp://|http://|https://)[^ <>'"{}|\\^`[\]]*)''')
+# 	return URL_REGEX.sub(r'<a href="\1">\1</a>')
 
 print "\n"
 print url_sub(my_tweets[0]['text'])
@@ -34,11 +34,11 @@ rssitems = []
 for tweet in my_tweets:
     rssitems.append(
                RSS.RSSItem(
-                           title=tweet[key]
-                           link=tweet[key]
-                           description=tweet[key]
-                           guid="Don't know what this is supposed to be guess who gets to read the RSS spec"
-                           pubDate=tweet[key]
+                           title=tweet['text']
+                           link=tweet[tweet['entities']['urls'][0]['expanded_url']]
+                           description=tweet['text']
+                           guid=RSS.Guid(tweet['entities']['urls'][0]['expanded_url'])
+                           pubDate=tweet['created_at'] # need to convert this into datetime
                            )
                )
 
@@ -47,9 +47,9 @@ rss = RSS.RSS2(
                link="https://twitter.com/MilMillington",
                description="An announcement feed to try and keep track of when "
                            "Mil Millington writes what used to be emails",
-                lastBuildDate=datetime.datetime.utcnow(),
+               lastBuildDate=datetime.datetime.utcnow(),
 
-                items=rssitems
-                )
+               items=rssitems
+              )
 
 rss.write_xml(open("milsmail.rss", "w"))
