@@ -8,6 +8,7 @@ import twitter
 import PyRSS2Gen as RSS
 import datetime
 
+
 auth = twitter.OAuth(token=config.access_token, 
 	                 token_secret=config.token_secret,
 	                 consumer_secret=config.consumer_secret,
