@@ -11,3 +11,8 @@ I also have never had a project or coded with github before! So lots of firsts h
 ##TODO:
 * convert URLs that appear in the tweets to links
 * title of RSS entry should link to enclosed link
+
+##Some Equations:
+\begin{align}
+d = \frac{sqrt{a^2 + b^2}}{c^2}
+\end{align}
